@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Laravel Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,6 +22,27 @@
         </style>
     </head>
     <body class="antialiased">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">Laravel Home</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/service">Service</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
