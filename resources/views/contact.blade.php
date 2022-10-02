@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="page-title">
-    <h1>Contact Page</h1>
+    <h1>{{ $page_name }}</h1>
+    <p>Mobile Number: {{ $mobile }}</p>
 </div>
 @endsection
