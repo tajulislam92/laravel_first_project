@@ -25,6 +25,6 @@ Route::get('/contact-us', function () {
 Route::get('/services', function () {
     return view('services');
 })->name('service');
-Route::get('/test-page/{test_page_id}/{test_page_name?}', function ($test_page_id,$test_page_name=null) {
-    return 'test id is '." ".$test_page_id." and ". 'test page name is'." ". $test_page_name;
+Route::get('/test-page', function () {
+    return view('test');
 })->name('test');
