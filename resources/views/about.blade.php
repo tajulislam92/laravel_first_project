@@ -1,5 +1,7 @@
 @extends('master')
 
 @section('content')
-<h1>About Page</h1>
+<div class="page-title">
+    <h1>About Page</h1>
+</div>
 @endsection

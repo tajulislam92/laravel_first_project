@@ -11,4 +11,11 @@
     body {
         font-family: 'Nunito', sans-serif;
     }
+    #navbarNav {
+        justify-content:flex-end;
+    }
+    .page-title h1{
+    text-align: center;
+    background-color:#ededed;
+    }
 </style>

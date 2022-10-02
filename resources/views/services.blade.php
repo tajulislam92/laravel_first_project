@@ -1,5 +1,7 @@
 @extends('master')
 
 @section('content')
-<h1>Service Page</h1>
+<div class="page-title">
+    <h1>Services Page</h1>
+</div>
 @endsection
