@@ -44,7 +44,7 @@ class CategoryController extends Controller
             'is_active' => $request->filled('is_active'),
         ]);
 
-        Session::flash('status', 'Category Created Successfully');
+        Session::flash('status', 'Category Created Successfully!');
         return back();
     }
 

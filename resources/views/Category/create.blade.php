@@ -3,11 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-8 m-auto">
-@if (session('status'))
-<div class="bg-success text-center text-white mb-3">
-{{ session('status') }}
-</div>
-@endif
+            @if (session('status'))
+                <div class="bg-success text-center text-white mb-3">
+                    <p class="p-3 m-3">{{ session('status') }}</p>
+                </div>
+            @endif
             <form action="{{ route('catgory.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -15,6 +15,7 @@
                     <input type="text" class="form-control @error('category_name') is-invalid @enderror"
                     id="category-name"
                     name="category_name"
+                    value="{{ old('category_name') }}"
                     placeholder="Please provide Category nam">
                     @error('category_name')
                         <span class="invalid-feedback" role="alert">
