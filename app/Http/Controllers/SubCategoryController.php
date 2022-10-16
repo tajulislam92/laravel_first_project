@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\SubCategoryStoreRequest;
+use App\Http\Requests\SubCategoryUpdateRequest;
 
 class SubCategoryController extends Controller
 {
@@ -48,7 +49,7 @@ return view('subcategory.index', compact('subcategories'));
             'is_active' => $request->filled('is_active')
         ]);
         Session::flash('status', 'Sub Category Created Successfully!');
-        return back();
+        return redirect()->route('subcatgory.index');
     }
 
     /**
@@ -70,7 +71,9 @@ return view('subcategory.index', compact('subcategories'));
      */
     public function edit($id)
     {
-        //
+        $categories = Category::get(['id', 'name']);
+        $subcategory= SubCategory::find($id);
+        return view('subcategory.edit', compact('categories','subcategory'));
     }
 
     /**
@@ -80,9 +83,18 @@ return view('subcategory.index', compact('subcategories'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubCategoryUpdateRequest $request, $id)
     {
-        //
+$subcategory = SubCategory::find($id);
+
+        $subcategory->update([
+            'category_id' => $request->category_id,
+            'name' => $request->subcategory_name,
+            'slug'=> Str::slug($request->subcategory_name),
+            'is_active' => $request->filled('is_active')
+        ]);
+        Session::flash('status', 'Sub Category Updated Successfully!');
+        return redirect()->route('subcatgory.index');
     }
 
     /**
