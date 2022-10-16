@@ -20,6 +20,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Category Name</th>
                         <th scope="col">Created</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,10 @@
                             <th scope="row">{{ $category->id }}</th>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->created_at->diffForHumans() }}</td>
+                            <td>
+                                <a href="{{ route('catgory.edit', ['catgory' => $category->id]) }}"
+                                    class="btn btn-info">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
 
