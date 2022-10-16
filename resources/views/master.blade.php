@@ -10,6 +10,12 @@
     <body>
         @include('includes.navbar')
         <div class="container">
+            <div class="card p-4">
+                @if (session('status'))
+                <div class="bg-success text-center text-white">
+                    <p>{{ session('status') }}</p>
+                </div>
+            @endif
             @yield('content')
         </div>
         @include('includes.scripts')

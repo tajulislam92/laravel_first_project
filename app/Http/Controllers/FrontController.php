@@ -16,7 +16,7 @@ public function about()
 $users=User::all();
     return view('about', [
         'page_name' => 'About Page',
-        'name' => 'Laravel 9',
+        'name' => 'Active Users',
         'users' => $users,
     ]);
 }

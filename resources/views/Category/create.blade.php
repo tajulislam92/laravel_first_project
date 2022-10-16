@@ -3,11 +3,6 @@
 @section('content')
     <div class="row">
         <div class="col-8 m-auto">
-            @if (session('status'))
-                <div class="bg-success text-center text-white mb-3">
-                    <p class="p-3 m-3">{{ session('status') }}</p>
-                </div>
-            @endif
             <form action="{{ route('catgory.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">

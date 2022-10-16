@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 
 Route::get('/services', [FrontController::class, 'services'])->name('service');
 Route::resource('/catgory',CategoryController::class);
+Route::resource('/subcatgory',SubCategoryController::class);
 
 Route::get('/test-page', function () {
     return view('test');

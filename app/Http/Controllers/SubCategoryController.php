@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryStoreRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\SubCategoryStoreRequest;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
-return view('Category.index', compact('categories'));
+$subcategories=SubCategory::get(['id','name','category_id','created_at']);
+return view('subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -28,7 +29,8 @@ return view('Category.index', compact('categories'));
      */
     public function create()
     {
-        return view('Category.create');
+        $categories = Category::get(['id', 'name']);
+        return view('subcategory.create', compact('categories'));
     }
 
     /**
@@ -37,15 +39,15 @@ return view('Category.index', compact('categories'));
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(SubCategoryStoreRequest $request)
     {
-        Category::create([
-            'name' => $request->category_name,
-            'slug' => Str::slug($request->category_name),
-            'is_active' => $request->filled('is_active'),
+        SubCategory::create([
+            'category_id' => $request->category_id,
+            'name' => $request->subcategory_name,
+            'slug'=> Str::slug($request->subcategory_name),
+            'is_active' => $request->filled('is_active')
         ]);
-
-        Session::flash('status', 'Category Created Successfully!');
+        Session::flash('status', 'Sub Category Created Successfully!');
         return back();
     }
 
