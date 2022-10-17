@@ -60,7 +60,9 @@ return view('subcategory.index', compact('subcategories'));
      */
     public function show($id)
     {
-        //
+$category = Category::all();
+        $subcategory = SubCategory::find($id);
+        return view('subcategory.show')->with(['category' => $category])->with(['subcategory' => $subcategory]);
     }
 
     /**
