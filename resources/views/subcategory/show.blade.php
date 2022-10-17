@@ -23,7 +23,8 @@
                         <th scope="col">Sub Categories</th>
                         <th scope="col">Created</th>
                         <th scope="col">Updated</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,14 @@
                         <td>
                             <a href="{{ route('subcatgory.edit', ['subcatgory'=> $subcategory->id]) }}"
                                 class="btn btn-info">Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('subcatgory.destroy', ['subcatgory' => $subcategory->id]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
 
