@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
+use App\Models\SubCategory;
 use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
@@ -18,8 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
-return view('Category.index', compact('categories'));
+        $categories = Category::all();
+        return view('Category.index', compact('categories'));
     }
 
     /**
@@ -58,7 +59,9 @@ return view('Category.index', compact('categories'));
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        $subcategory = SubCategory::where('category_id', $id)->get();
+        return view('Category.show')->with(['category' => $category])->with(['subcategory' => $subcategory]);
     }
 
     /**
@@ -70,8 +73,8 @@ return view('Category.index', compact('categories'));
     public function edit($id)
     {
         $categories = Category::get(['id', 'name']);
-$category = Category::find($id);
-        return view('Category.edit', compact('categories','category'));
+        $category = Category::find($id);
+        return view('Category.edit', compact('categories', 'category'));
     }
 
     /**
@@ -93,7 +96,6 @@ $category = Category::find($id);
         Session::flash('status', 'Category Updated Successfully!');
         return redirect(route('catgory.index'));
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -102,6 +104,9 @@ $category = Category::find($id);
      */
     public function destroy($id)
     {
-        //
+$category = Category::find($id)->delete();
+
+        Session::flash('status', 'Category Deleted Successfully!');
+        return redirect(route('catgory.index'));
     }
 }

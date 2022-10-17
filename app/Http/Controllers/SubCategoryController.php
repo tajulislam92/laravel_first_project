@@ -105,6 +105,8 @@ $subcategory = SubCategory::find($id);
      */
     public function destroy($id)
     {
-        //
+        SubCategory::find($id)->delete();
+        Session::flash('status', 'Sub Category Deleted Successfully!');
+        return redirect()->route('subcatgory.index');
     }
 }

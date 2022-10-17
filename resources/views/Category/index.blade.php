@@ -20,18 +20,32 @@
                         <th scope="col">Id</th>
                         <th scope="col">Category Name</th>
                         <th scope="col">Created</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Show</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <th scope="row">{{ $category->id }}</th>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->created_at->diffForHumans() }}</td>
                             <td>
                                 <a href="{{ route('catgory.edit', ['catgory' => $category->id]) }}"
                                     class="btn btn-info">Edit</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('catgory.show', ['catgory' => $category->id]) }}"
+                                    class="btn btn-info">Show</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('catgory.destroy', ['catgory' => $category->id]) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
