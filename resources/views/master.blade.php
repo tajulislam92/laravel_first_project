@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel Home Page</title>
+        <title>Home Page</title>
+        @vite('resources/js/app.js', 'vendor/courier/build')
         @include('includes.style')
         @include('includes.fonts')
     </head>
