@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class FrontController extends Controller
 {
 public function home()
 {
+    Toastr::success('this is Home page');
     return view('welcome');
 }
 public function about()
